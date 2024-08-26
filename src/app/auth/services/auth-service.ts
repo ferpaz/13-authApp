@@ -82,6 +82,21 @@ export class AuthService {
       );
   }
 
+  register(name: string, email: string, password: string) : Observable<boolean> {
+    const url = `${this.baseUrl}/auth/register`;
+    const body = { name, email, password };
+
+    return this.http.post<LoginResponse>(url, body)
+      .pipe(
+        // Si no hay error se guarda el nuevo usuario y el token en el servicio
+        map(({ user, token }) => this.handleSuccess(user, token)),
+
+        // En caso de error se reenvia el error
+        catchError((err) => this.handleError(err))
+      );
+
+  }
+
   private handleSuccess(user: User, token: string) : boolean {
     this._currentUser.set(user);
     this._autStatus.set(AuthStatus.authenticated);
