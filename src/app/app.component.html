@@ -1,1 +1,5 @@
-<router-outlet />
+<p *ngIf="!finishedAuthCheck">
+  Loading not fising
+</p>
+
+<router-outlet *ngIf="finishedAuthCheck" />
