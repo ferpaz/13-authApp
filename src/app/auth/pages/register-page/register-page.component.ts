@@ -15,10 +15,10 @@ export class RegisterPageComponent {
   private fb = inject( FormBuilder )
 
   public myForm: FormGroup = this.fb.group({
-    name: ['Justo Rufino Barrios', [Validators.required, Validators.minLength(3)]],
-    email: ['jrbarrios@gmail.com', [Validators.required, Validators.email]],
-    password: ['123456', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['123456', [Validators.compose(
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    confirmPassword: ['', [Validators.compose(
       [
         Validators.required,
         Validators.minLength(6),
